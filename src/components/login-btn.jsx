@@ -9,9 +9,11 @@ export default function LoginBtn() {
     return (
       <>
       {session.user.email} <br />
-        <button onClick={() => signOut()} className="border rounded-md p-2 cursor-pointer">
-          Sign out
-        </button>
+
+          <button onClick={() => signOut()} className="border rounded-md p-2 cursor-pointer">
+            Sign out
+          </button>
+      
       </>
     )
   }

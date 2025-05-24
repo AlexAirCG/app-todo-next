@@ -1,5 +1,5 @@
 import React from "react";
-import LoginBtn from "./login-btn";
+import LoginBtn from "./LoginBtn";
 
 function Nav() {
   return (

@@ -1,17 +1,86 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { MdOutlineLibraryAdd } from "react-icons/md";
 
 function TodoInput() {
+  const [todo, setTodo] = useState("");
+  const [category, setCategory] = useState("leisure");
+  const [seted, setSeted] = useState({
+    work: false,
+    study: false,
+    personal: false,
+    leisure: true,
+  });
+
+  const handleSeted = (e) => {
+    setCategory(e.target.id);
+    const newSteted = {
+      work: false,
+      study: false,
+      personal: false,
+      leisure: false,
+    };
+    newSteted[e.target.id] = true;
+    setSeted(newSteted);
+  };
+
   return (
-    <div className="flex mt-2">
-      <input
-        className="border border-gray-500 dark:text-gray-200 w-full rounded-md p-2 mr-3"
-        type="text"
-        placeholder="введите задачу"
-      />
-      <button>
-        <MdOutlineLibraryAdd className="text-3xl cursor-pointer hover:text-gray-400" />
-      </button>
+    <div>
+      <div className="flex mt-2">
+        <input
+          className="border border-gray-500 dark:text-gray-200 w-full rounded-md p-2 mr-3"
+          type="text"
+          placeholder="введите задачу"
+          value={todo}
+          onChange={(e) => setTodo(e.target.value)}
+        />
+        <button>
+          <MdOutlineLibraryAdd className="text-3xl cursor-pointer hover:text-gray-400" />
+        </button>
+      </div>
+      <div className="flex justify-between mt-2">
+        <div className="flex items-center gap-2">
+          <input
+            id="work"
+            type="radio"
+            name="category"
+            className={`${seted.work ? "border-3" : ""} appearance-none w-4 h-4 bg-green-400 rounded-full cursor-pointer`}
+            onChange={(e) => handleSeted(e)}
+          />
+          <span>Работа</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <input
+            id="study"
+            type="radio"
+            name="category"
+            className={`${seted.study ? "border-3" : ""} appearance-none w-4 h-4 bg-red-400 rounded-full cursor-pointer`}
+            onChange={(e) => handleSeted(e)}
+          />
+          <span>Учёба</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <input
+            id="personal"
+            type="radio"
+            name="category"
+            className={`${seted.personal ? "border-3" : ""} appearance-none w-4 h-4 bg-blue-400 rounded-full cursor-pointer`}
+            onChange={(e) => handleSeted(e)}
+          />
+          <span>Личное</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <input
+            id="leisure"
+            type="radio"
+            name="category"
+            className={`${seted.leisure ? "border-3" : ""} appearance-none w-4 h-4 bg-yellow-400 rounded-full cursor-pointer`}
+            onChange={(e) => handleSeted(e)}
+          />
+          <span>Досуг</span>
+        </div>
+      </div>
     </div>
   );
 }

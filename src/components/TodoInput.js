@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { MdOutlineLibraryAdd } from "react-icons/md";
+import { mutate } from "swr";
 
 function TodoInput() {
   const [todo, setTodo] = useState("");
@@ -12,6 +13,22 @@ function TodoInput() {
     personal: false,
     leisure: true,
   });
+
+  const createTodo = async () => {
+    if (!todo) {
+      alert("type something");
+      return;
+    }
+    await fetch("/api/todo", {
+      method: "POST",
+      body: JSON.stringify({
+        title: todo,
+        category: category,
+      }),
+    });
+    setTodo("");
+    mutate("/api/todo");
+  };
 
   const handleSeted = (e) => {
     setCategory(e.target.id);
@@ -36,7 +53,10 @@ function TodoInput() {
           onChange={(e) => setTodo(e.target.value)}
         />
         <button>
-          <MdOutlineLibraryAdd className="text-3xl cursor-pointer hover:text-gray-400" />
+          <MdOutlineLibraryAdd
+            onClick={createTodo}
+            className="text-3xl cursor-pointer hover:text-gray-400"
+          />
         </button>
       </div>
       <div className="flex justify-between mt-2">

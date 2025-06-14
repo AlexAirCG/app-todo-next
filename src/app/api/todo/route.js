@@ -38,3 +38,44 @@ export async function POST(req) {
   });
   return NextResponse.json({ todo });
 }
+
+export async function DELETE(req) {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return NextResponse.json("not authorized");
+  }
+
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+  const deleteTodo = await prisma.todo.delete({
+    where: {
+      id: id,
+    },
+  });
+  return NextResponse.json({
+    message: "Successfully deleted todo",
+    deleteTodo,
+  });
+}
+
+export async function PATCH(req) {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return NextResponse.json("not authorized");
+  }
+
+  const data = await req.json();
+
+  const updateTodo = await prisma.todo.update({
+    where: {
+      id: data.id,
+    },
+    data: {
+      title: data.title,
+      completed: data.completed,
+      category: data.category,
+    },
+  });
+
+  return NextResponse.json({ updateTodo });
+}

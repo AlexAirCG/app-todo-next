@@ -30,6 +30,12 @@ function TodoInput() {
     mutate("/api/todo");
   };
 
+  const handleEnter = (e) => {
+    if (e.code == "Enter") {
+      createTodo();
+    }
+  };
+
   const handleSeted = (e) => {
     setCategory(e.target.id);
     const newSteted = {
@@ -51,6 +57,7 @@ function TodoInput() {
           placeholder="введите задачу"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
+          onKeyUp={(e) => handleEnter(e)}
         />
         <button>
           <MdOutlineLibraryAdd
@@ -68,7 +75,7 @@ function TodoInput() {
             className={`${seted.work ? "border-3" : ""} appearance-none w-4 h-4 bg-green-400 rounded-full cursor-pointer`}
             onChange={(e) => handleSeted(e)}
           />
-          <span>Работа</span>
+          <span>Досуг</span>
         </div>
         <div className="flex items-center gap-2">
           <input
@@ -88,7 +95,7 @@ function TodoInput() {
             className={`${seted.personal ? "border-3" : ""} appearance-none w-4 h-4 bg-blue-400 rounded-full cursor-pointer`}
             onChange={(e) => handleSeted(e)}
           />
-          <span>Личное</span>
+          <span>Спорт</span>
         </div>
         <div className="flex items-center gap-2">
           <input
@@ -98,7 +105,7 @@ function TodoInput() {
             className={`${seted.leisure ? "border-3" : ""} appearance-none w-4 h-4 bg-yellow-400 rounded-full cursor-pointer`}
             onChange={(e) => handleSeted(e)}
           />
-          <span>Досуг</span>
+          <span>Дела</span>
         </div>
       </div>
     </div>

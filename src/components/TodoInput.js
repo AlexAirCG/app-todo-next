@@ -75,7 +75,7 @@ function TodoInput() {
             className={`${seted.work ? "border-3" : ""} appearance-none w-4 h-4 bg-green-400 rounded-full cursor-pointer`}
             onChange={(e) => handleSeted(e)}
           />
-          <span>Досуг</span>
+          <span>Вещи</span>
         </div>
         <div className="flex items-center gap-2">
           <input
@@ -85,7 +85,7 @@ function TodoInput() {
             className={`${seted.study ? "border-3" : ""} appearance-none w-4 h-4 bg-red-400 rounded-full cursor-pointer`}
             onChange={(e) => handleSeted(e)}
           />
-          <span>Учёба</span>
+          <span>Аптека</span>
         </div>
         <div className="flex items-center gap-2">
           <input
@@ -95,7 +95,7 @@ function TodoInput() {
             className={`${seted.personal ? "border-3" : ""} appearance-none w-4 h-4 bg-blue-400 rounded-full cursor-pointer`}
             onChange={(e) => handleSeted(e)}
           />
-          <span>Спорт</span>
+          <span>Для дома</span>
         </div>
         <div className="flex items-center gap-2">
           <input
@@ -105,7 +105,7 @@ function TodoInput() {
             className={`${seted.leisure ? "border-3" : ""} appearance-none w-4 h-4 bg-yellow-400 rounded-full cursor-pointer`}
             onChange={(e) => handleSeted(e)}
           />
-          <span>Дела</span>
+          <span>Продукты</span>
         </div>
       </div>
     </div>

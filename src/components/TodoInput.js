@@ -1,12 +1,13 @@
 "use client";
 
+// import Link from "next/link";
 import React, { useState } from "react";
 import { MdOutlineLibraryAdd } from "react-icons/md";
 import { mutate } from "swr";
 
 function TodoInput() {
   const [todo, setTodo] = useState("");
-  const [category, setCategory] = useState("leisure");
+  const [category, setCategory] = useState("");
   const [seted, setSeted] = useState({
     work: false,
     study: false,
@@ -67,6 +68,7 @@ function TodoInput() {
         </button>
       </div>
       <div className="flex justify-between mt-2">
+        {/* <Link href="/api/category/things"> */}
         <div className="flex items-center gap-2">
           <input
             id="work"
@@ -77,6 +79,9 @@ function TodoInput() {
           />
           <span>Вещи</span>
         </div>
+        {/* </Link> */}
+
+        {/* <Link href="/api/category/pharmacy"> */}
         <div className="flex items-center gap-2">
           <input
             id="study"
@@ -87,6 +92,9 @@ function TodoInput() {
           />
           <span>Аптека</span>
         </div>
+        {/* </Link> */}
+
+        {/* <Link href="/api/category/house"> */}
         <div className="flex items-center gap-2">
           <input
             id="personal"
@@ -97,15 +105,21 @@ function TodoInput() {
           />
           <span>Для дома</span>
         </div>
-        <div className="flex items-center gap-2">
-          <input
-            id="leisure"
-            type="radio"
-            name="category"
-            className={`${seted.leisure ? "border-3" : ""} appearance-none w-4 h-4 bg-yellow-400 rounded-full cursor-pointer`}
-            onChange={(e) => handleSeted(e)}
-          />
-          <span>Продукты</span>
+        {/* </Link> */}
+
+        <div>
+          {/* <Link href="/api/category/food"> */}
+          <div className="flex items-center gap-2">
+            <input
+              id="leisure"
+              type="radio"
+              name="category"
+              className={`${seted.leisure ? "border-3" : ""} appearance-none w-4 h-4 bg-yellow-400 rounded-full cursor-pointer`}
+              onChange={(e) => handleSeted(e)}
+            />
+            <span>Продукты</span>
+          </div>
+          {/* </Link> */}
         </div>
       </div>
     </div>
